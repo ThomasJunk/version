@@ -2,8 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: "main"
-
+    branches:
+      - "main"
+    tags:
+      - "v*"
 jobs:
   build_site:
     runs-on: ubuntu-latest
