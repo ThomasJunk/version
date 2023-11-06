@@ -3,3 +3,4 @@
 </script>
 
 <h1>Welcome to MyApp {version}</h1>
+<h2>A new world is born</h2>
