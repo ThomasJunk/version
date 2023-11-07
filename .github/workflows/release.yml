@@ -19,10 +19,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Update package.json version
+      - name: Configuire git
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email '<>'
+
+      - name: Update package.json version
+        run: |
           LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
           npm version $LATEST_VERSION
 
