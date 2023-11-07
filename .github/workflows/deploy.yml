@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 # Run only on new tags
 on:
   push:
+    branches:
+      - main
     tags:
       - v*
 jobs:
