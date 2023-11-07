@@ -21,14 +21,10 @@ jobs:
 
       - name: Update package.json version
         run: |
-          LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
-          npm version $LATEST_VERSION
-
-      - name: Commit package.json
-        run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email '<>'
-          git commit -am "Update package.json version" --no-edit
+          LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
+          npm version $LATEST_VERSION
 
       - name: Push changes
         uses: ad-m/github-push-action@master
