@@ -1,0 +1,37 @@
+name: Update package.json on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "21"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update package.json version
+        run: |
+          LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
+          npm version $LATEST_VERSION
+
+      - name: Commit package.json
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email '<>'
+          git commit -am "Update package.json version" --no-edit
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
