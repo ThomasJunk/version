@@ -3,4 +3,4 @@
 </script>
 
 <h1>Welcome to MyApp {version}</h1>
-<p>Allet blöd außa Muddi</p>
+<p>Allet blöd außa Muddi!</p>
