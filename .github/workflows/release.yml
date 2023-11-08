@@ -21,7 +21,7 @@ jobs:
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'thomas.junk@intevation.de'
           LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
-          npm version $LATEST_VERSION
+          npm version $LATEST_VERSION git-tag-version=false;
 
       - name: Push changes
         uses: ad-m/github-push-action@master
