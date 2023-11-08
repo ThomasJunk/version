@@ -19,7 +19,7 @@ jobs:
       - name: Update package.json version
         run: |
           git config --global user.name 'GitHub Actions'
-          git config -- global user.email '<>'
+          git config --global user.email 'thomas.junk@intevation.de'
           LATEST_VERSION=$(echo "${GITHUB_REF}" | awk -F"/" '{print $3}')
           npm version $LATEST_VERSION
 
